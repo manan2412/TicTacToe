@@ -14,6 +14,5 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setLogo(R.drawable.logo);
         setContentView(R.layout.activity_main);
 
-
     }
 }
