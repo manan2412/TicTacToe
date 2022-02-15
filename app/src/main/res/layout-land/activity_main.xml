@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/size"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -10,7 +11,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:orientation="horizontal"
-        android:weightSum="3">
+        android:weightSum="3"
+        android:baselineAligned="false">
 
         <!-- col 1 -->
 
@@ -18,13 +20,15 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:importantForAccessibility="no"
             android:orientation="vertical"
             android:paddingHorizontal="20dp">
 
             <Button
                 android:id="@+id/button00"
                 android:layout_width="100dp"
-                android:layout_height="100dp" />
+                android:layout_height="100dp"
+                tools:ignore="SpeakableTextPresentCheck" />
         </LinearLayout>
 
         <LinearLayout
@@ -37,7 +41,9 @@
             <Button
                 android:id="@+id/button01"
                 android:layout_width="100dp"
-                android:layout_height="100dp" />
+                android:layout_height="100dp"
+                android:importantForAccessibility="no"
+                tools:ignore="SpeakableTextPresentCheck" />
         </LinearLayout>
 
         <LinearLayout
@@ -50,7 +56,9 @@
             <Button
                 android:id="@+id/button02"
                 android:layout_width="100dp"
-                android:layout_height="100dp" />
+                android:layout_height="100dp"
+                android:importantForAccessibility="no"
+                tools:ignore="SpeakableTextPresentCheck" />
         </LinearLayout>
     </LinearLayout>
 
@@ -72,7 +80,9 @@
             <Button
                 android:id="@+id/button10"
                 android:layout_width="100dp"
-                android:layout_height="100dp" />
+                android:layout_height="100dp"
+                android:importantForAccessibility="no"
+                tools:ignore="SpeakableTextPresentCheck" />
         </LinearLayout>
 
         <LinearLayout
@@ -85,7 +95,9 @@
             <Button
                 android:id="@+id/button11"
                 android:layout_width="100dp"
-                android:layout_height="100dp" />
+                android:layout_height="100dp"
+                android:importantForAccessibility="no"
+                tools:ignore="SpeakableTextPresentCheck" />
         </LinearLayout>
 
         <LinearLayout
@@ -98,17 +110,19 @@
             <Button
                 android:id="@+id/button12"
                 android:layout_width="100dp"
-                android:layout_height="100dp" />
+                android:layout_height="100dp"
+                android:importantForAccessibility="no"
+                tools:ignore="SpeakableTextPresentCheck" />
         </LinearLayout>
 
         <Button
             android:id="@+id/NewGameBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
+            android:layout_marginStart="30dp"
             android:layout_marginTop="25dp"
             android:paddingHorizontal="10dp"
-            android:text="@string/newGame" />
+            android:text="@string/newGame"/>
 
     </LinearLayout>
 
@@ -131,7 +145,9 @@
             <Button
                 android:id="@+id/button20"
                 android:layout_width="100dp"
-                android:layout_height="100dp" />
+                android:layout_height="100dp"
+                android:importantForAccessibility="no"
+                tools:ignore="SpeakableTextPresentCheck" />
         </LinearLayout>
 
         <LinearLayout
@@ -144,7 +160,9 @@
             <Button
                 android:id="@+id/button21"
                 android:layout_width="100dp"
-                android:layout_height="100dp" />
+                android:layout_height="100dp"
+                android:importantForAccessibility="no"
+                tools:ignore="SpeakableTextPresentCheck" />
         </LinearLayout>
 
         <LinearLayout
@@ -157,7 +175,9 @@
             <Button
                 android:id="@+id/button22"
                 android:layout_width="100dp"
-                android:layout_height="100dp" />
+                android:layout_height="100dp"
+                android:importantForAccessibility="no"
+                tools:ignore="SpeakableTextPresentCheck" />
         </LinearLayout>
         <TextView
             android:id="@+id/GameStatus"

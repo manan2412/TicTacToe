@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical" >
+    android:contentDescription="@null"
+    android:orientation="vertical">
+
     <LinearLayout
-        android:layout_marginTop="200dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:baselineAligned="false"
         android:orientation="horizontal"
-        android:weightSum="3" >
+        android:weightSum="3">
 
         <!-- col 1 -->
 
@@ -22,8 +26,12 @@
             <Button
                 android:id="@+id/button00"
                 android:layout_width="100dp"
-                android:layout_height="100dp" />
+                android:layout_height="100dp"
+                android:importantForAccessibility="no"
+                android:textAlignment="center"
+                android:textSize="60sp" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -34,8 +42,10 @@
             <Button
                 android:id="@+id/button01"
                 android:layout_width="100dp"
-                android:layout_height="100dp" />
+                android:layout_height="100dp"
+                android:importantForAccessibility="no" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -46,14 +56,17 @@
             <Button
                 android:id="@+id/button02"
                 android:layout_width="100dp"
-                android:layout_height="100dp" />
+                android:layout_height="100dp"
+                android:importantForAccessibility="no" />
         </LinearLayout>
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:baselineAligned="false"
         android:orientation="horizontal"
-        android:weightSum="3" >
+        android:weightSum="3">
 
         <!-- col 2 -->
 
@@ -67,8 +80,10 @@
             <Button
                 android:id="@+id/button10"
                 android:layout_width="100dp"
-                android:layout_height="100dp" />
+                android:layout_height="100dp"
+                android:importantForAccessibility="no" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -79,25 +94,32 @@
             <Button
                 android:id="@+id/button11"
                 android:layout_width="100dp"
-                android:layout_height="100dp" />
+                android:layout_height="100dp"
+                android:contentDescription="@null"
+                android:importantForAccessibility="no" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical"
             android:paddingHorizontal="20dp">
+
             <Button
                 android:id="@+id/button12"
                 android:layout_width="100dp"
-                android:layout_height="100dp" />
+                android:layout_height="100dp"
+                android:importantForAccessibility="no" />
         </LinearLayout>
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:baselineAligned="false"
         android:orientation="horizontal"
-        android:weightSum="3" >
+        android:weightSum="3">
 
         <!-- col 3 -->
 
@@ -111,8 +133,10 @@
             <Button
                 android:id="@+id/button20"
                 android:layout_width="100dp"
-                android:layout_height="100dp" />
+                android:layout_height="100dp"
+                android:importantForAccessibility="no" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -123,10 +147,12 @@
             <Button
                 android:id="@+id/button21"
                 android:layout_width="100dp"
-                android:layout_height="100dp" />
+                android:layout_height="100dp"
+                tools:ignore="SpeakableTextPresentCheck" />
 
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -138,24 +164,26 @@
                 android:id="@+id/button22"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                />
+                android:importantForAccessibility="no" />
         </LinearLayout>
     </LinearLayout>
+
     <TextView
         android:id="@+id/GameStatus"
-        android:layout_marginTop="20sp"
-        android:layout_gravity="center_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20sp"
         android:text="@string/XTurn"
-        android:textSize="25sp"/>
+        android:textAlignment="center"
+        android:textSize="25sp" />
+
     <Button
         android:id="@+id/NewGameBtn"
-        android:layout_marginTop="40dp"
-        android:layout_gravity="center_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/newGame"
-      />
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"
+        android:text="@string/newGame"/>
+<!--        android:onClick="RestartGame"/>-->
 </LinearLayout>

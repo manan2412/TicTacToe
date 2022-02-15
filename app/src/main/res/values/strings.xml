@@ -4,6 +4,6 @@
     <string name="XTurn">Player X\'s Turn</string>
     <string name="OTurn">Player O\'s Turn</string>
     <string name="XWin"> Player X win</string>
-    <string name="YWin">Player Y win</string>
-    <string name="Tie">Tie</string>
+    <string name="YWin">Player O win</string>
+    <string name="Tie">Game is Tie</string>
 </resources>
