@@ -28,7 +28,8 @@
                 android:id="@+id/button00"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                tools:ignore="SpeakableTextPresentCheck" />
+                tools:ignore="SpeakableTextPresentCheck"
+                android:textSize="60sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -43,7 +44,8 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:importantForAccessibility="no"
-                tools:ignore="SpeakableTextPresentCheck" />
+                tools:ignore="SpeakableTextPresentCheck"
+                android:textSize="60sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -58,7 +60,8 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:importantForAccessibility="no"
-                tools:ignore="SpeakableTextPresentCheck" />
+                tools:ignore="SpeakableTextPresentCheck"
+                android:textSize="60sp" />
         </LinearLayout>
     </LinearLayout>
 
@@ -82,7 +85,8 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:importantForAccessibility="no"
-                tools:ignore="SpeakableTextPresentCheck" />
+                tools:ignore="SpeakableTextPresentCheck"
+                android:textSize="60sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -97,7 +101,8 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:importantForAccessibility="no"
-                tools:ignore="SpeakableTextPresentCheck" />
+                tools:ignore="SpeakableTextPresentCheck"
+                android:textSize="60sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -112,7 +117,8 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:importantForAccessibility="no"
-                tools:ignore="SpeakableTextPresentCheck" />
+                tools:ignore="SpeakableTextPresentCheck"
+                android:textSize="60sp" />
         </LinearLayout>
 
         <Button
@@ -147,7 +153,8 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:importantForAccessibility="no"
-                tools:ignore="SpeakableTextPresentCheck" />
+                tools:ignore="SpeakableTextPresentCheck"
+                android:textSize="60sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -162,7 +169,8 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:importantForAccessibility="no"
-                tools:ignore="SpeakableTextPresentCheck" />
+                tools:ignore="SpeakableTextPresentCheck"
+                android:textSize="60sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -177,7 +185,8 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:importantForAccessibility="no"
-                tools:ignore="SpeakableTextPresentCheck" />
+                tools:ignore="SpeakableTextPresentCheck"
+                android:textSize="60sp" />
         </LinearLayout>
         <TextView
             android:id="@+id/GameStatus"

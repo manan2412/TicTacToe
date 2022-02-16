@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Binder;
 import android.os.Bundle;
 import android.os.IBinder;
@@ -36,8 +37,8 @@ public class MainActivity extends AppCompatActivity
 //        updateStatus();
 
         statusTxtView = findViewById(R.id.GameStatus);
-        newGameButton  = findViewById(R.id.NewGameBtn);
-        buttonArrays= new Button[3][3];
+        newGameButton = findViewById(R.id.NewGameBtn);
+        buttonArrays = new Button[3][3];
         buttonArrays[0][0] = findViewById(R.id.button00);
         buttonArrays[0][1] = findViewById(R.id.button01);
         buttonArrays[0][2] = findViewById(R.id.button02);
@@ -47,7 +48,6 @@ public class MainActivity extends AppCompatActivity
         buttonArrays[2][0] = findViewById(R.id.button20);
         buttonArrays[2][1] = findViewById(R.id.button21);
         buttonArrays[2][2] = findViewById(R.id.button22);
-
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 buttonArrays[i][j].setOnClickListener(this);
@@ -56,6 +56,87 @@ public class MainActivity extends AppCompatActivity
         }
         newGameButton.setOnClickListener(this);
     }
+
+    //    @Override
+//    public void onConfigurationChanged(Configuration newConfig) {
+//        super.onConfigurationChanged(newConfig);
+//
+//        // Checks the orientation of the screen
+//        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+//            Toast.makeText(this, "landscape", Toast.LENGTH_SHORT).show();
+//        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
+//            Toast.makeText(this, "portrait", Toast.LENGTH_SHORT).show();
+//        }
+//    }
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        // Save UI state changes to the savedInstanceState.
+        // This bundle will be passed to onCreate if the process is
+        // killed and restarted.
+        savedInstanceState.putBoolean("XturnKey", isXturn);
+        savedInstanceState.putString("statusKey", statusTxtView.getText().toString());
+        String[] btnStrArry = new String[9];
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (i == 0) {
+                    btnStrArry[i + j] = buttonArrays[i][j].getText().toString();
+                }
+                if (i == 1) {
+                    btnStrArry[3 + j] = buttonArrays[i][j].getText().toString();
+                }
+                if (i == 2) {
+                    btnStrArry[6 + j] = buttonArrays[i][j].getText().toString();
+                }
+            }
+        }
+
+        savedInstanceState.putStringArray("button_string_array", btnStrArry);
+//        savedInstanceState.putInt("MyInt", 1);
+//        savedInstanceState.putString("MyString", "Welcome back to Android");
+        // etc.
+    }
+
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        // Restore UI state from the savedInstanceState.
+        // This bundle has also been passed to onCreate.
+        String status = savedInstanceState.getString("statusKey");
+        boolean XTurn = savedInstanceState.getBoolean("XturnKey");
+        String[] btnStrArry = savedInstanceState.getStringArray("button_string_array");
+        for (int i = 0; i < 9; i++) {
+            if (i == 0 || i == 1 || i == 2) {
+                buttonArrays[0][i].setText(btnStrArry[i]);
+                if (buttonArrays[0][i].getText().toString() == "" || buttonArrays[0][i] == null) {
+                    buttonArrays[0][i].setClickable(true);
+                } else {
+                    buttonArrays[0][i].setClickable(false);
+
+                }
+            } else if (i == 3 || i == 4 || i == 5) {
+                buttonArrays[1][i - 3].setText(btnStrArry[i]);
+                if (buttonArrays[1][i - 3].getText().toString() == "" || buttonArrays[1][i - 3] == null) {
+                    buttonArrays[1][i - 3].setClickable(true);
+                } else {
+                    buttonArrays[1][i - 3].setClickable(false);
+
+                }
+            } else if (i == 6 || i == 7 || i == 8) {
+                buttonArrays[2][i - 6].setText(btnStrArry[i]);
+                if (buttonArrays[2][i - 6].getText().toString() == "" || buttonArrays[2][i - 6] == null) {
+                    buttonArrays[2][i - 6].setClickable(true);
+                } else {
+                    buttonArrays[2][i - 6].setClickable(false);
+                }
+            }
+            isXturn = XTurn;
+            statusTxtView.setText(status);
+
+        }
+    }
+
     /*@Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
@@ -99,7 +180,8 @@ public class MainActivity extends AppCompatActivity
             btn.setText("O");
         }
     }
-    protected  void RestartGame(){
+
+    protected void RestartGame() {
         isXturn = true;
         isGameOn = true;
         statusTxtView.setText(R.string.XTurn);
@@ -110,21 +192,23 @@ public class MainActivity extends AppCompatActivity
             }
         }
     }
-    protected  void TieCheck(){
+
+    protected void TieCheck() {
         int count = 0;
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if(buttonArrays[i][j].getText() != "") {
+                if (buttonArrays[i][j].getText() != "") {
                     count++;
                 }
             }
         }
-        if(count == 9 && isGameOn){
+        if (count == 9 && isGameOn) {
             isGameOn = false;
             statusTxtView.setText(R.string.Tie);
         }
     }
-    protected void validateGame(){
+
+    protected void validateGame() {
         CharSequence value00 = buttonArrays[0][0].getText();
         CharSequence value01 = buttonArrays[0][1].getText();
         CharSequence value02 = buttonArrays[0][2].getText();
@@ -136,32 +220,24 @@ public class MainActivity extends AppCompatActivity
         CharSequence value22 = buttonArrays[2][2].getText();
 
         //Horizontal Lines
-        if((value00 == value02) && (value01 == value02) && (value00 != ""))
-        {
-            if(value00 == "X"){
+        if ((value00 == value02) && (value01 == value02) && (value00 != "")) {
+            if (value00 == "X") {
                 statusTxtView.setText(R.string.XWin);
-            }
-            else{
+            } else {
                 statusTxtView.setText(R.string.YWin);
             }
             isGameOn = false;
-        }
-        else if  ((value11 == value12) && (value10 == value12)&& (value10 != ""))
-        {
-            if(value10 == "X"){
+        } else if ((value11 == value12) && (value10 == value12) && (value10 != "")) {
+            if (value10 == "X") {
                 statusTxtView.setText(R.string.XWin);
-            }
-            else{
+            } else {
                 statusTxtView.setText(R.string.YWin);
             }
             isGameOn = false;
-        }
-        else if  ((value21 == value22) && (value22 == value20)&& (value20 != ""))
-        {
-            if(value20 == "X"){
+        } else if ((value21 == value22) && (value22 == value20) && (value20 != "")) {
+            if (value20 == "X") {
                 statusTxtView.setText(R.string.XWin);
-            }
-            else{
+            } else {
                 statusTxtView.setText(R.string.YWin);
             }
             isGameOn = false;
@@ -169,66 +245,53 @@ public class MainActivity extends AppCompatActivity
 
 
         //Vertical Lines
-        if((value00 == value10) && (value10 == value20) && (value00 != ""))
-        {
-            if(value00 == "X"){
+        if ((value00 == value10) && (value10 == value20) && (value00 != "")) {
+            if (value00 == "X") {
                 statusTxtView.setText(R.string.XWin);
-            }
-            else{
+            } else {
                 statusTxtView.setText(R.string.YWin);
             }
             isGameOn = false;
-        }
-        else if  ((value01 == value11) && (value01 == value21)&& (value01 != ""))
-        {
-            if(value01 == "X"){
+        } else if ((value01 == value11) && (value01 == value21) && (value01 != "")) {
+            if (value01 == "X") {
                 statusTxtView.setText(R.string.XWin);
-            }
-            else{
+            } else {
                 statusTxtView.setText(R.string.YWin);
             }
             isGameOn = false;
-        }
-        else if  ((value02 == value12) && (value22 == value12)&& (value02 != ""))
-        {
-            if(value02 == "X"){
+        } else if ((value02 == value12) && (value22 == value12) && (value02 != "")) {
+            if (value02 == "X") {
                 statusTxtView.setText(R.string.XWin);
-            }
-            else{
+            } else {
                 statusTxtView.setText(R.string.YWin);
             }
             isGameOn = false;
         }
 
         //Diagonal Lines
-        if((value00 == value11) && (value00 == value22) && (value00 != ""))
-        {
-            if(value00 == "X"){
+        if ((value00 == value11) && (value00 == value22) && (value00 != "")) {
+            if (value00 == "X") {
                 statusTxtView.setText(R.string.XWin);
-            }
-            else{
+            } else {
                 statusTxtView.setText(R.string.YWin);
             }
             isGameOn = false;
-        }
-        else if  ((value02 == value11) && (value02 == value20)&& (value02 != ""))
-        {
-            if(value02 == "X"){
+        } else if ((value02 == value11) && (value02 == value20) && (value02 != "")) {
+            if (value02 == "X") {
                 statusTxtView.setText(R.string.XWin);
-            }
-            else{
+            } else {
                 statusTxtView.setText(R.string.YWin);
             }
             isGameOn = false;
         }
     }
+
     @Override
     public void onClick(@NonNull View view) {
-        if(view.getId() == R.id.NewGameBtn){
+        if (view.getId() == R.id.NewGameBtn) {
             RestartGame();
-        }
-        else if (view.isClickable()) {
-            if(isGameOn){
+        } else if (view.isClickable()) {
+            if (isGameOn) {
                 Toast.makeText(this, "Button Clicked", Toast.LENGTH_SHORT).show();
                 drawButton((Button) view);
                 updateStatus();
